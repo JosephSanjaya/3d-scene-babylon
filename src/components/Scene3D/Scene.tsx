@@ -22,7 +22,6 @@ const MODELS = {
   NORMAL: { fileName: "BPJS_Female_Normal.glb", label: "Female Normal" }
 };
 
-// Custom hook for managing Babylon.js scene
 const useBabylonScene = (canvasRef) => {
   const [engine, setEngine] = useState(null);
   const [scene, setScene] = useState(null);
@@ -32,6 +31,10 @@ const useBabylonScene = (canvasRef) => {
 
     const newEngine = new BABYLON.Engine(canvasRef.current, true);
     const newScene = new BABYLON.Scene(newEngine);
+
+    // Make background transparent
+    newScene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
+    canvasRef.current.style.backgroundColor = "transparent";
 
     setEngine(newEngine);
     setScene(newScene);
